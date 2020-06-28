@@ -1,0 +1,15 @@
+repositories {
+//    google()
+//    jcenter()
+    maven{
+        url 'http://localhost:8081/artifactory/xiaoma/'
+    }
+
+}
+dependencies {
+    implementation 'com.android.tools.build:gradle:3.4.2'
+
+    // NOTE:implementation 'com.android.tools.build:gradle:3.4.2' Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+}
+

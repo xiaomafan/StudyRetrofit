@@ -1,0 +1,183 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+//apply plugin: 'com.xiaoma.plugindemo'
+/*apply from:'../config.gradle'
+xiaoma {
+    name 'hahahhaaaaa'
+}*/
+
+task testfrom{
+    doLast{
+        println("版本;${version}")
+    }
+}
+
+
+/*class PluginDemo implements Plugin<Project> {
+    @Override
+    void apply(Project project) {
+        def extension=project.extensions.create("nihao",ExtensionDemo)
+        project.afterEvaluate {
+            println "hello ${extension.author}"
+        }
+
+//        println 'Hello word!'
+    }
+}
+
+apply plugin: PluginDemo
+
+nihao{
+   author 'xiaomage kuozhan'
+}
+
+class ExtensionDemo{
+    def author="xiaoma extentsion"
+}*/
+
+android {
+    compileSdkVersion 28
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    defaultConfig {
+        applicationId "com.xiaoma.demo"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        flavorDimensions "versionCode"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+    }
+    //正式版本 测试版本主要是icon  name等配置
+    flavorDimensions("paying", 'nation')
+    productFlavors {
+        free {
+            applicationId "com.xiaoma.demo"
+            resValue "string", "app_name", "demo"
+            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
+            dimension 'paying'
+        }
+        paid {
+            applicationId "com.xiaoma.demotwo"
+            resValue "string", "app_name", "demotwo"
+            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
+            dimension 'nation'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //通过页面查看不同版本的,有代码配置
+    buildTypes {
+        xiaoma {
+            initWith debug
+        }
+        debug {
+            initWith debug
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.8"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.5.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+//    implementation 'com.acsm.module:osssdk:1.0.9'
+//    annotationProcessor
+
+    //消息队列遥测传输
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.android.support:multidex:1.0.3'
+}
+repositories {
+    mavenCentral()
+}
+
+/*task bumpVersion() {
+    doLast {
+        def versionPropsFile = file('version.properties')
+        def versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        def codeBumped = versionProps['VERSION_CODE'].toInteger() + 1
+        def versionName=versionProps['VERSION_NAME']
+        println("bumpVersion" + codeBumped+"//"+versionName)
+        versionProps['VERSION_CODE'] = codeBumped.toString()
+        versionProps['VERSION_NAME']='1.9.9'
+        versionProps.store(versionPropsFile.newWriter(), null)
+    }
+    doFirst {
+        println("first")
+    }
+    println("bumpVersion")
+}
+//依赖上面的任务
+task notifyVersionBump(dependsOn: bumpVersion) {
+    doLast {
+        println("Bumped!!!")
+    }
+}*/
+
+/*afterEvaluate {
+    println("二三阶段之间")
+}*/
+
+def patchPath = 'com/xiaoma/hencoder/utils/Title'
+
+task hotfix{
+    doLast{
+        exec {
+            commandLine 'rm','-r','./build/patch'
+        }
+        exec {
+            commandLine 'mkdir','./build/patch'
+        }
+        exec {
+            commandLine 'javac', "./src/main/java/${patchPath}.java", '-d', './build/patch'
+        }
+        exec {
+            commandLine 'H:/ProgramFiles/SDK/build-tools/28.0.3/d8', "./build/patch/${patchPath}.class", '--output', './build/patch'
+        }
+        exec {
+            commandLine 'mv', "./build/patch/classes.dex", './build/patch/hotfix.dex'
+        }
+    }
+}

@@ -1,0 +1,5 @@
+include ':app', ':pluginmodule', ':studykotlin'
+
+println("一二阶段之间-项目配置")
+
+

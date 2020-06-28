@@ -1,0 +1,60 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.50'
+    repositories {
+        //仓库来源配置
+        jcenter()
+        google()
+     /*   maven{
+            url 'http://localhost:8081/artifactory/xiaoma/'
+        }*/
+    }
+    dependencies {
+        //依赖
+//        classpath 'com.android.tools.build:gradle:3.4.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50"
+        //classpath  最后调用的是add
+        add('classpath','com.android.tools.build:gradle:3.4.2')
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+/*allprojects(new Action<Project>() {
+    @Override
+    void execute(Project project) {
+        repositories {
+            jcenter()
+            google()
+        }
+    }
+})*/
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+     /*   maven{
+            url 'http://localhost:8081/artifactory/xiaoma/'
+        }*/
+    }
+}
+
+/*print("====="+rootProject.buildDir)
+task clean(type: Delete) {
+    doLast{
+        println("2")
+    }
+    doFirst{
+        println("first")
+    }
+    println("1")
+    delete rootProject.buildDir
+    doLast{
+        println("3")
+    }
+}
+
+println("build.gradle-  阶段")*/

@@ -1,0 +1,8 @@
+project.task("showConfig"){
+    version='111'
+//    versionName="xiaoma"
+    doLast {
+        println("$project.name:showConfig")
+    }
+    println("配置文件")
+}

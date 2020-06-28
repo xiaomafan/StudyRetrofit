@@ -1,0 +1,433 @@
+@startuml
+
+title __VIEW's Class Diagram__\n
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.AvatarView {
+          ~ avatar : Bitmap
+          ~ board : RectF
+          ~ cut : RectF
+          ~ paint : Paint
+          ~ xfermode : Xfermode
+          {static} - BOARD_PADDING : float
+          {static} - PADDING : float
+          {static} - RADIUS : float
+          + AvatarView()
+          # onDraw()
+          # onSizeChanged()
+          ~ getAvatar()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.CircleView {
+          - PADDING : float
+          - RADIU : float
+          - paint : Paint
+          + CircleView()
+          + dispatchTouchEvent()
+          + onTouchEvent()
+          # onDraw()
+          # onMeasure()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.ColoredTextView {
+          {static} - COLORS : int[]
+          {static} - CORNER_RADIUS : int
+          {static} - TEXT_SIZES : int[]
+          {static} - X_PADDING : int
+          {static} - Y_PADDING : int
+          - paint : Paint
+          {static} - random : Random
+          + ColoredTextView()
+          # onDraw()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.CustomView {
+          + CustomView()
+          + onInterceptTouchEvent()
+          + onTouchEvent()
+          # onLayout()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.CustomViewActivity {
+          {static} - TAG : String
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.CustomViewPager {
+          ~ downX : float
+          ~ downY : float
+          ~ maxVelocity : int
+          ~ minVelocity : int
+          ~ overScroller : OverScroller
+          ~ scrolling : boolean
+          ~ velocityTracker : VelocityTracker
+          ~ viewConfiguration : ViewConfiguration
+          - downScrollX : int
+          + CustomViewPager()
+          + computeScroll()
+          + onInterceptTouchEvent()
+          + onTouchEvent()
+          # onLayout()
+          # onMeasure()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.DashBoard {
+          ~ dash : Path
+          ~ paint : Paint
+          ~ path : Path
+          ~ pathMeasure : PathMeasure
+          {static} - ANGLE : float
+          {static} - LENGTH : float
+          {static} - RADIUS : float
+          - pathDashPathEffect : PathDashPathEffect
+          - pathLenth : float
+          + DashBoard()
+          # onDraw()
+          # onSizeChanged()
+          ~ getAngleForMark()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.MaterialEditText {
+          ~ backgroundPaddings : Rect
+          {static} - HORIZONTAL_OFFSET : float
+          {static} - TEXT_MARGIN : float
+          {static} - TEXT_SIZE : float
+          {static} - VERTICAL_OFFSET : float
+          {static} - VERTICAL_OFFSET_EXTRA : float
+          - animator : ObjectAnimator
+          - floatingLabelFraction : float
+          - floatingLabelShown : boolean
+          - hint : String
+          - paint : Paint
+          - userFloatingLabel : boolean
+          + MaterialEditText()
+          + getFloatingLabelFraction()
+          + setFloatingLabelFraction()
+          + setUseFloatingLabel()
+          # onDraw()
+          - getAnimator()
+          - init()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.MultiTouchView {
+          ~ trackingPointerID : int
+          {static} - WIDTH_BITMAP : float
+          - downX : float
+          - downY : float
+          - imageOffsetX : float
+          - imageOffsetY : float
+          - offsetX : float
+          - offsetY : float
+          - paint : Paint
+          + MultiTouchView()
+          + onTouchEvent()
+          # onDraw()
+          ~ getAvatar()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.MultiTouchViewThree {
+          ~ paint : Paint
+          ~ paths : SparseArray<Path>
+          + MultiTouchViewThree()
+          + onTouchEvent()
+          # onDraw()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.MultiToucheViewTwo {
+          ~ trackingPointerID : int
+          {static} - WIDTH_BITMAP : float
+          - downX : float
+          - downY : float
+          - imageOffsetX : float
+          - imageOffsetY : float
+          - offsetX : float
+          - offsetY : float
+          - paint : Paint
+          + MultiToucheViewTwo()
+          + onTouchEvent()
+          # onDraw()
+          ~ getAvatar()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.NewScaleableImageView {
+          ~ bigScale : float
+          ~ bitmap : Bitmap
+          ~ currentFraction : float
+          ~ detecotr : GestureDetectorCompat
+          ~ isBigScale : boolean
+          ~ offsetX : float
+          ~ offsetY : float
+          ~ origiOffsetY : float
+          ~ originOffsetX : float
+          ~ overScroller : OverScroller
+          ~ paint : Paint
+          ~ scaleAnmator : ObjectAnimator
+          ~ scaleDetector : ScaleGestureDetector
+          ~ smallScale : float
+          {static} - IMAGE_WIDTH : float
+          {static} - OVER_SCALE_FACTION : float
+          + NewScaleableImageView()
+          + getCurrentFraction()
+          + onTouchEvent()
+          + setCurrentFraction()
+          # onDraw()
+          # onSizeChanged()
+          ~ getAvatar()
+          - fixOffsetX()
+          - fixOffsetY()
+          - getScaleAnimator()
+          - refresh()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.NewScaleableImageView.XiaoFlingRunner {
+          + run()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.NewScaleableImageView.XiaoGestureListener {
+          + onDoubleTap()
+          + onDoubleTapEvent()
+          + onDown()
+          + onFling()
+          + onLongPress()
+          + onScroll()
+          + onShowPress()
+          + onSingleTapConfirmed()
+          + onSingleTapUp()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.NewScaleableImageView.XiaoScaleListener {
+          ~ initialScale : float
+          + onScale()
+          + onScaleBegin()
+          + onScaleEnd()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.OneHundredView {
+          + OneHundredView()
+          # onMeasure()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.PathView {
+          ~ paint : Paint
+          ~ path : Path
+          ~ pathMeasure : PathMeasure
+          {static} - RADIUS : float
+          + PathView()
+          # onDraw()
+          # onSizeChanged()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.PieChat {
+          ~ ANGLES : int[]
+          ~ COLORS : int[]
+          ~ bounds : RectF
+          ~ paint : Paint
+          {static} - PULLED_INDEX : int
+          {static} - PULL_DISTANCE : float
+          {static} - RADIUS : float
+          + PieChat()
+          # onDraw()
+          # onSizeChanged()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.ScaleableImageView {
+          ~ bigScale : float
+          ~ bitmap : Bitmap
+          ~ detecotr : GestureDetectorCompat
+          ~ isBigScale : boolean
+          ~ offsetX : float
+          ~ offsetY : float
+          ~ origiOffsetY : float
+          ~ originOffsetX : float
+          ~ overScroller : OverScroller
+          ~ paint : Paint
+          ~ scaleAnmator : ObjectAnimator
+          ~ scaleFraction : float
+          ~ smallScale : float
+          {static} - IMAGE_WIDTH : float
+          {static} - OVER_SCALE_FACTION : float
+          + ScaleableImageView()
+          + getScaleFraction()
+          + onDoubleTap()
+          + onDoubleTapEvent()
+          + onDown()
+          + onFling()
+          + onLongPress()
+          + onScroll()
+          + onShowPress()
+          + onSingleTapConfirmed()
+          + onSingleTapUp()
+          + onTouchEvent()
+          + run()
+          + setScaleFraction()
+          # onDraw()
+          # onSizeChanged()
+          ~ getAvatar()
+          - getScaleAnimator()
+          - refresh()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.SquareImageView {
+          + SquareImageView()
+          + layout()
+          # onLayout()
+          # onMeasure()
+      }
+    }
+  }
+  
+
+  namespace com.xiaoma {
+    namespace hencoder.view {
+      class com.xiaoma.hencoder.view.TagLayout {
+          - childrenBounds : List<Rect>
+          + TagLayout()
+          + dispatchTouchEvent()
+          + generateLayoutParams()
+          + onInterceptTouchEvent()
+          # onLayout()
+          # onMeasure()
+          # onVisibilityChanged()
+      }
+    }
+  }
+  
+
+  com.xiaoma.hencoder.view.AvatarView -up-|> android.view.View
+  com.xiaoma.hencoder.view.CircleView -up-|> android.view.View
+  com.xiaoma.hencoder.view.ColoredTextView -up-|> androidx.appcompat.widget.AppCompatTextView
+  com.xiaoma.hencoder.view.CustomView -up-|> android.view.ViewGroup
+  com.xiaoma.hencoder.view.CustomViewActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.xiaoma.hencoder.view.CustomViewActivity o-- com.xiaoma.hencoder.view.MaterialEditText : mCustomEditext
+  com.xiaoma.hencoder.view.CustomViewPager -up-|> android.view.ViewGroup
+  com.xiaoma.hencoder.view.DashBoard -up-|> android.view.View
+  com.xiaoma.hencoder.view.MaterialEditText -up-|> androidx.appcompat.widget.AppCompatEditText
+  com.xiaoma.hencoder.view.MultiTouchView -up-|> android.view.View
+  com.xiaoma.hencoder.view.MultiTouchViewThree -up-|> android.view.View
+  com.xiaoma.hencoder.view.MultiToucheViewTwo -up-|> android.view.View
+  com.xiaoma.hencoder.view.NewScaleableImageView -up-|> androidx.appcompat.widget.AppCompatImageView
+  com.xiaoma.hencoder.view.NewScaleableImageView o-- com.xiaoma.hencoder.view.NewScaleableImageView.XiaoScaleListener : scaleListener
+  com.xiaoma.hencoder.view.NewScaleableImageView o-- com.xiaoma.hencoder.view.NewScaleableImageView.XiaoFlingRunner : xiaoFlingRunner
+  com.xiaoma.hencoder.view.NewScaleableImageView o-- com.xiaoma.hencoder.view.NewScaleableImageView.XiaoGestureListener : xiaoGestureListener
+  com.xiaoma.hencoder.view.NewScaleableImageView +-down- com.xiaoma.hencoder.view.NewScaleableImageView.XiaoFlingRunner
+  com.xiaoma.hencoder.view.NewScaleableImageView +-down- com.xiaoma.hencoder.view.NewScaleableImageView.XiaoGestureListener
+  com.xiaoma.hencoder.view.NewScaleableImageView +-down- com.xiaoma.hencoder.view.NewScaleableImageView.XiaoScaleListener
+  com.xiaoma.hencoder.view.NewScaleableImageView.XiaoFlingRunner .up.|> java.lang.Runnable
+  com.xiaoma.hencoder.view.NewScaleableImageView.XiaoGestureListener .up.|> android.view.GestureDetector.OnDoubleTapListener
+  com.xiaoma.hencoder.view.NewScaleableImageView.XiaoGestureListener .up.|> android.view.GestureDetector.OnGestureListener
+  com.xiaoma.hencoder.view.NewScaleableImageView.XiaoScaleListener .up.|> android.view.ScaleGestureDetector.OnScaleGestureListener
+  com.xiaoma.hencoder.view.OneHundredView -up-|> android.view.View
+  com.xiaoma.hencoder.view.PathView -up-|> android.view.View
+  com.xiaoma.hencoder.view.PieChat -up-|> android.view.View
+  com.xiaoma.hencoder.view.ScaleableImageView .up.|> android.view.GestureDetector.OnDoubleTapListener
+  com.xiaoma.hencoder.view.ScaleableImageView .up.|> android.view.GestureDetector.OnGestureListener
+  com.xiaoma.hencoder.view.ScaleableImageView .up.|> java.lang.Runnable
+  com.xiaoma.hencoder.view.ScaleableImageView -up-|> androidx.appcompat.widget.AppCompatImageView
+  com.xiaoma.hencoder.view.SquareImageView -up-|> androidx.appcompat.widget.AppCompatImageView
+  com.xiaoma.hencoder.view.TagLayout -up-|> android.view.ViewGroup
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
